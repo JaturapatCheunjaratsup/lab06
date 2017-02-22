@@ -1,0 +1,87 @@
+<html>
+
+<head>
+    <script>
+        function loadXMLDoc() {
+            var xmlhttp;
+            var xmlhttp1;
+            var xmlhttp2;
+            if (window.XMLHttpRequest) {
+
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp1 = new XMLHttpRequest();
+                xmlhttp2 = new XMLHttpRequest();
+
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                xmlhttp1 = new ActiveXObject("Microsoft.XMLHTTP");
+                xmlhttp2 = new ActiveXObject("Microsoft.XMLHTTP");
+
+            }
+
+            xmlhttp.onreadystatechange = function() {
+                alert(xmlhttp.readyState + " : " + xmlhttp.status);
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("GET", "kamkom.php", true);
+            xmlhttp.send();
+
+            xmlhttp1.onreadystatechange = function() {
+                document.getElementById("myDiv1").innerHTML = xmlhttp1.responseText;
+            }
+            xmlhttp1.open("GET", "http://angsila.cs.buu.ac.th/~58160021/887371/lab05/kamkom.php", true);
+            xmlhttp1.send();
+
+
+            xmlhttp2.onreadystatechange = function() {
+                document.getElementById("myDiv2").innerHTML = xmlhttp2.responseText;
+            }
+            xmlhttp2.open("GET", "http://angsila.cs.buu.ac.th/~58160422/887371/lab05/kamkom.php", true);
+            xmlhttp2.send();
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="myDiv">
+
+        <h2>
+            Let AJAX change this text
+        </h2>
+    </div>
+    <div id="myDiv1">
+        <h2></h2>
+    </div>
+    <div id="myDiv2">
+        <h2></h2>
+    </div>
+    <button type="button" onclick="loadXMLDoc()">
+	Change Content
+</button>
+    <br><br><br>
+
+    <table border=1 bgcolor="skyblue">
+        <tr>
+            <td align="center">
+                <h2>รูปภาพ</h2>
+            </td>
+            <td align="center">
+                <h2>คำอธิบาย</h2>
+            </td>
+        </tr>
+
+        <tr>
+            <td><img src="Pic/lab05.png" class="img-rounded" width="450"></td>
+            <td>5-12: สร้าง object XMLHttp Request<br>14: เรียกใช้ฟังก์ชัน พร้อมกับสร้างฟังก์ชันเพื่อใช้งาน<br>15: สร้าง pop-up แสดงขั้นตอน ต่อด้วย : และสถานะ เป็นขั้นๆไปเรื่อยๆ<br>16: สร้างเงื่อนไขว่า ถ้ามีขั้นตอน 4 ขั้นตอน และมีสถานะ 200 <br>17: ถ้าเป็นจริงให้เปลี่ยนตัวอักษรที่เรากำหนดไว้ในไฟล์
+                .txt
+                <br> 20: เปิดไฟล์ที่เราสร้างไว้ <br> 21: ส่งไฟล์ที่เปิดไปยัง responseText<br>28: ตั้ง id ชื่อ myDiv เมื่อถึงขั้นตอนที่ 4 ให้เปลี่ยน เป็นสิ่งที่เราพิมพ์ข้อความถัดไป<br>34: สร้างปุ่มเพื่อกดเปลี่ยนขั้นตอนถัดไป <br>35: ให้ปุ่มชื่อว่า Change
+                Content
+            </td>
+        </tr>
+
+</body>
+
+</html>
